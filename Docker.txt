@@ -1,0 +1,27 @@
+********************************************************************************************************************
+            ******************  Installing docker	**************** 
+apt-get install linux-image-extra-virtual -y
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+apt-get update
+apt-get install docker docker.io -y
+
+********************************************************************************************************************
+			******************	Docker Commands 	****************
+To pull image from docker hub 			--------->	docker pull <image name>
+To check images on local machine		--------->	docker images
+To check running containers				--------->	docker ps 
+To Stop a running container				--------->	docker stop <container id>
+To remove a container					---------> 	docker rm <container id>
+To remove a running container			--------->	docker rm -f <container id> { -f is for forcibly}
+To login into container while creating	--------->	docker run -ti <image name> /bin/bash
+To do Port binding						--------->	docker run -p 80:80 nginx 				(left 80 is docker port and right 80 is container port (docker port can changed but container port will be same))
+To run the image in detach mode 		--------->	docker run -d -p 80:80 nginx			(above command will run nginx image on 80 port but in detached mode in background)
+To run a diff version of nginx in a diff port 	->	docker run -d -p 90:80 nginx:(version)	(above command will run nginx:version on 90 port in detached mode in backgroundm
+							 (nginx default port = 80)
+							(Tomcat default port = 8080)
+To run a Apache Tomcat on port 8080		--------->	docker run -d -p 8080:8080 tomcat
+To run a diff version of Tomcat on port 9090 	->	docker run -d -p 9090:8080 tomcat:version
+To build a customized docker image		--------->	docker build -t {custom name}/{image we are using} .
+To login into a running container		--------->	docker exec -it <container name/container id> /bin/bash
+To exit from a running container		--------->	ctrl+p+q
+To Kill all stopped containers 			--------->	docker container prune
